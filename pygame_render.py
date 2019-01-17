@@ -5,14 +5,13 @@ import random
 def launch_graphics(cues,pages):
     #initializes video
     pygame.init()
+    pygame.font.init()
+    font = pygame.font.SysFont('Comic Sans MS', 30)
     #sets the screen size
     screen = pygame.display.set_mode((520, 350))
     paused = False
     blue=(0,0,255)
     red=(255,0,0)
-    #fonts
-    pygame.font.init()
-    font = pygame.font.SysFont('Comic Sans MS', 30)
     def eventHandler(pause_state):
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -24,22 +23,23 @@ def launch_graphics(cues,pages):
     def drawScreen():
         color = (230, 230, 230)
         screen.fill(color)
-    def drawRect(color):
-        new_rect = pygame.draw.rect(screen, color, (200,150,100,50))
-        pygame.display.update()
+    def drawRect(color, x, y, w, h):
+        new_rect = pygame.draw.rect(screen, color, (x,y,w,h))
         return new_rect
     def renderText(text_string):
         new_text = font.render(text_string, True, (0xff, 0xff, 0xff))
-        screen.blit()
-        return new_text
-
-    while (1):
-        paused = eventHandler(paused)
-        drawScreen()
-        if paused is not True:
-            drawRect(blue)
-        else:
-            drawRect(red)
-        pygame.display.update()
+        screen.blit(new_text,(200,150))
+    def drawCard(cueIndex):
+        while (1):
+            paused = eventHandler(paused)
+            drawScreen()
+            if paused is not True:
+                drawRect(blue)
+                renderText("beebo")
+            else:
+                drawRect(red)
+                renderText("beebo ")
+            pygame.display.update()
+    drawCard()
 
 launch_graphics(0,0)
