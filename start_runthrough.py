@@ -1,4 +1,4 @@
-import requests
+from pygame_render import launch_graphics
 
 filename = "line_separated_cues.txt"
 file = open(filename, "r")
@@ -29,6 +29,4 @@ for page in range(0, len(pages)):
 		if (cue+1)*(page+1) < len(cues):
 			print(pages[page][cue])
 
-# pygame.init()
-# screen = pygame.display.set_mode((520,350))
-# pygame.draw.rect(s)
+launch_graphics

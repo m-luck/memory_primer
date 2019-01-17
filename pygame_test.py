@@ -1,37 +1,24 @@
-import request
 import pygame
-import sys
-import random
-
-numberOfRows = 2
-numberOfColumns = 3
-
-top = 32
-bottom = 42
-
-#initializes video
 pygame.init()
 
-#sets the screen size
-screen = pygame.display.set_mode((520, 350))
-pause = False
-blue=(0,0,255)
-red=(255,0,0)
+#
+# For demo purposes, the button is the whole window
+#
 
+button = pygame.display.set_mode((400, 320))
 
-while (1):
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                pause = not pause
-    color = (255, 255, 255)
-    screen.fill(color)
-    #draws a rectangle on screen with color (r,g,b) at loc (x,y) of width w, height h.
-    if pause != True:
-        pygame.draw.rect(screen, blue,(200,150,100,50))
-    else:
-        pygame.draw.rect(screen, red,(200,150,100,50))
+#
+# Create 12-point text in white saying "Hello, World!"
+#
+font = pygame.font.Font(pygame.font.get_default_font(), 12)
+text = font.render("Hello, World!", True, (0xff, 0xff, 0xff))
 
-    pygame.display.update()
+#
+# Use the text's rect to get width / height
+# Then center that rect on the target surface
+#
+text_rect = text.get_rect()
+text_rect.center = button.get_rect().center
+button.blit(text, text_rect)
+
+pygame.display.flip()
