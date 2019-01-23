@@ -1,23 +1,28 @@
+# Author: Michael Lukiman
 from pygame_render import launch_graphics
-
-filename = "line_separated_cues.txt"
-file = open(filename, "r")
-
+import re
+import time
+import ast
 screen_w = 1000
 screen_h = 500
 row = 2
 column = 3
 cues_per_page = row*column
-
 cues = []
 pages = []
-page_stats = {}
-cue_stats = {}
+filename = "line_separated_cues.txt"
+file = open(filename, "r")
 for line in file:
 	phrase = line.split("\n")
 	phrase = phrase[0]
 	cues.append(phrase)
-print(cues)
+filename = "cue_stats.txt"
+file = open(filename, "r")
+cue_stats = {}
+cue_pauses = []
+block_time = []
+string = file.readline()
+cue_stats = ast.literal_eval(string)
 i = 0
 while i < len(cues):
 	page = []
@@ -27,9 +32,16 @@ while i < len(cues):
 			page[layout_index] = cues[i]
 		i += 1
 	pages.append(page)
-# for page in range(0, len(pages)):
-# 	print("\nPage ",page+1,":")
-# 	for cue in range(0,cues_per_page):
-# 		if (cue+1)*(page+1) < len(cues):
-# 			print(pages[page][cue])
-launch_graphics(row,column,pages,screen_w,screen_h)
+cue_stats_add, block_ended = launch_graphics(row,column,pages,screen_w,screen_h)
+for cue in cue_stats_add:
+	new_info = [block_ended,cue_stats_add[cue]]
+	if cue in cue_stats:
+		cue_stats[cue].append(new_info)
+	else:
+		cue_stats[cue] = [new_info]
+for cue in cue_stats:
+	print(cue)
+	for info_set in cue_stats[cue]:
+		print("\t",info_set[0])
+		for pause in info_set[1]:
+			print("\t\t",pause)

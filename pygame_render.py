@@ -15,8 +15,9 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
     red=(255,0,0)
     row_height = math.floor(h / rows)
     col_width = math.floor(w / cols)
-    def eventHandler(pause_state):
+    def eventHandler(pause_state, old_pause):
         reset = False
+        finished = False
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     sys.exit()
@@ -25,7 +26,10 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
                         pause_state = not pause_state
                     if event.key == pygame.K_r:
                         reset = True
-        return pause_state, reset
+                        pause_state = False
+                    if event.key == pygame.K_q:
+                        finished = True
+        return pause_state, reset, old_pause, finished
     def drawScreen():
         color = (230, 230, 230)
         screen.fill(color)
@@ -48,12 +52,29 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
         for cue in page:
             drawCard(count,cue,rows,cols,row_height,col_width,color)
             count += 1
+    def init_stats(deck):
+        cue_stats = {}
+        for page in deck:
+            for cue in page:
+                cue_stats[cue] = []
+        return cue_stats
+    def update_stats(ind,deck,pause_length,cue_stats):
+        page = deck[ind]
+        for cue in page:
+            cue_stats[cue].append(pause_length)
+        return cue_stats
     def drawCards(rows,cols,row_height,col_width,deck,pause_state):
         start = time.time()
         ind = 0
-        while (1):
+        pause_end = time.time()
+        pause_start = 0
+        pause_end = 0
+        old_pause = False
+        cue_stats = init_stats(deck)
+        finished = False
+        while (finished == False):
             time.sleep(0.1)
-            pause_state, reset = eventHandler(pause_state)
+            pause_state, reset, old_pause, finished = eventHandler(pause_state, old_pause)
             now = time.time()
             interval = 1.5
             if now - start > interval:
@@ -68,7 +89,16 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
             drawScreen()
             if pause_state is not True:
                 drawCardGrid(ind,deck,rows,cols,row_height,col_width,blue)
+                if old_pause is True:
+                    pause_end = time.time()
+                    old_pause = False
+                    cue_stats = update_stats(ind,deck,pause_end-pause_start,cue_stats)
             else:
                 drawCardGrid(ind,deck,rows,cols,row_height,col_width,red)
+                if old_pause is False:
+                    pause_start = time.time()
+                    old_pause = True
             pygame.display.update()
-    drawCards(rows,cols,row_height,col_width,deck,pause_state)
+        return cue_stats
+    cue_stats = drawCards(rows,cols,row_height,col_width,deck,pause_state)
+    return cue_stats, time.time()
