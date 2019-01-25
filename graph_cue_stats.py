@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import ast
-filename = "cue_stats.txt"
-file = open(filename, "r")
+file_path = "cue_stats.txt"
+file = open(file_path, "r")
 cue_stats = ast.literal_eval(file.readline())
 for cue in cue_stats:
     X = []
