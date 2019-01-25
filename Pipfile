@@ -7,9 +7,7 @@ verify_ssl = true
 
 [packages]
 pygame = "*"
-sys = "*"
-random = "*"
-request = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.7"

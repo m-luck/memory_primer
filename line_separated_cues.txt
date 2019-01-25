@@ -1,3 +1,9 @@
+multi-electrode array
+hemodynamic
+gzip
+Tape Archive
+gcc
+bourne again shell
 sandwich masking
 ASIC
 prime
@@ -19,8 +25,73 @@ discount rates
 Wilcoxon signed rank test
 explicit zero
 striatum (willpower)
-ventral striatum (mood)
-right inferior frontal gyrus 
+ventral striatum (mood, arousal)
+right inferior frontal gyrus
 dlPFC
 Fp1
 BCI illiteracy
+posix
+extracellular
+sub-Hz
+voxel
+microscopy
+GECIs
+BRAIN Initiative
+volumetric microscopy
+cortical
+d = lambda / 2NA
+n = M / dt
+nano
+fluorophore
+SNR
+modalities
+tissue heating (40C Podgorski 2006)
+photodamage
+cranial windows
+immersion water
+vascalature
+c elegans 302
+drosophila 10^5
+larval zebrafish 10^5
+7.1*10^7 mouse
+2*10^8 rat
+6.4*10^8 marmoset
+COV
+SBR
+SPECT
+chromophore
+fluorescence modulatioon
+GCamp6f 140ms
+second messenger x2 orders
+GEVI 10ms
+ICA
+NMF
+Gaussian
+kurtosis
+negentropy
+rank
+orthogonal PCA
+microlens array
+array detector
+sequential acquisitioooon
+parallel acquisition
+confocal LSM
+in vivo
+in vitro
+2p lsm
+photobleaching
+NIR region
+temporal multiplexing
+photomultiplier tubes
+titanium sapphire oscillator 80hz
+point spread function
+scanned temporal focusing (s-TeFo)
+re .
+positive expertise = caudate nuclei, SFG MPFC
+dlPFC changing decisions, IFG
+mPFC resistance to change
+rostralMPFC + postcingulate tailored deliberation
+ROI (neuro and finance)
+ls -Xr1
+benefits>features
+Amazon FBA

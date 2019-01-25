@@ -3,10 +3,11 @@ from pygame_render import launch_graphics
 import re
 import time
 import ast
-screen_w = 1000
-screen_h = 500
-row = 2
-column = 3
+import random
+screen_w = 1368
+screen_h = 920
+row = 3
+column = 4
 cues_per_page = row*column
 cues = []
 pages = []
@@ -16,11 +17,10 @@ for line in file:
 	phrase = line.split("\n")
 	phrase = phrase[0]
 	cues.append(phrase)
+random.shuffle(cues)
 filename = "cue_stats.txt"
 file = open(filename, "r")
 cue_stats = {}
-cue_pauses = []
-block_time = []
 string = file.readline()
 cue_stats = ast.literal_eval(string)
 i = 0
@@ -45,3 +45,7 @@ for cue in cue_stats:
 		print("\t",info_set[0])
 		for pause in info_set[1]:
 			print("\t\t",pause)
+file.close()
+file = open("cue_stats.txt","w")
+file.write(str(cue_stats))
+file.close()
