@@ -61,9 +61,10 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
     def update_stats(ind,deck,pause_length,cue_stats):
         page = deck[ind]
         for cue in page:
-            cue_stats[cue].append(pause_length)
+            cue_stats[cue].append(pause_length,)
         return cue_stats
     def drawCards(rows,cols,row_height,col_width,deck,pause_state):
+        response_times = []
         start = time.time()
         ind = 0
         pause_end = time.time()
@@ -72,6 +73,7 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
         old_pause = False
         cue_stats = init_stats(deck)
         finished = False
+        screen_start = time.time()
         while (finished == False):
             time.sleep(0.1)
             pause_state, reset, old_pause, finished = eventHandler(pause_state, old_pause)
@@ -81,6 +83,7 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
                 start = time.time()
                 if ind < len(deck)-1 and pause_state == False:
                     ind += 1
+                    screen_start = time.time()
             if reset == True:
                 reset = False
                 if ind == len(deck)-1:
@@ -98,7 +101,13 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
                 if old_pause is False:
                     pause_start = time.time()
                     old_pause = True
+                    screen_pause = time.time()
+                    response_times.append(screen_pause-screen_start)
             pygame.display.update()
+        file = open("response_times.txt","a+")
+        string = "\n"+str(time.time()) +":"+str(response_times)
+        file.write(string)
         return cue_stats
     cue_stats = drawCards(rows,cols,row_height,col_width,deck,pause_state)
+
     return cue_stats, time.time()

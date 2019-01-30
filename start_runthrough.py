@@ -39,12 +39,12 @@ for cue in cue_stats_add:
 		cue_stats[cue].append(new_info)
 	else:
 		cue_stats[cue] = [new_info]
-for cue in cue_stats:
-	print(cue)
-	for info_set in cue_stats[cue]:
-		print("\t",info_set[0])
-		for pause in info_set[1]:
-			print("\t\t",pause)
+# for cue in cue_stats:
+# 	print(cue)
+# 	for info_set in cue_stats[cue]:
+# 		print("\t",info_set[0])
+# 		for pause in info_set[1]:
+# 			print("\t\t",pause)
 file.close()
 file = open("cue_stats.txt","w")
 file.write(str(cue_stats))

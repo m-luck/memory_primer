@@ -5,7 +5,7 @@ Tape Archive
 gcc
 bourne again shell
 sandwich masking
-ASIC
+ASIC:ApSpIntCir
 prime
 o(n)
 cross product
@@ -27,72 +27,113 @@ explicit zero
 striatum (willpower)
 ventral striatum (mood, arousal)
 right inferior frontal gyrus
-dlPFC
 Fp1
 BCI illiteracy
 posix
 extracellular
-sub-Hz
 voxel
 microscopy
-GECIs
-BRAIN Initiative
+GECIs:gen enc calc
+BRAIN:Br Res (th) Ad In Ne(tech)
 volumetric microscopy
 cortical
-d = lambda / 2NA
-n = M / dt
 nano
 fluorophore
 SNR
 modalities
 tissue heating (40C Podgorski 2006)
-photodamage
 cranial windows
 immersion water
 vascalature
-c elegans 302
-drosophila 10^5
-larval zebrafish 10^5
-7.1*10^7 mouse
-2*10^8 rat
-6.4*10^8 marmoset
-COV
-SBR
-SPECT
+c.eleg neur:302(10^2)
+drosophila neur:10^5(100k)
+larv zebfish:10^5(100k)
+mouse neur:7.1*10^7(10mil)
+rat neur:2*10^8(100mil)
+marm neur:6.4*10^8(100mil)
+COV:coef o' var
+SBR:spec bind rat
+SPECT:sin ph em comp tom
 chromophore
 fluorescence modulatioon
 GCamp6f 140ms
 second messenger x2 orders
-GEVI 10ms
+GEVI 10ms: gen en vol ind
 ICA
-NMF
+NMF:neg mat fac
 Gaussian
-kurtosis
-negentropy
+kurtosis: dist
+negentropy: -ent
 rank
 orthogonal PCA
 microlens array
 array detector
 sequential acquisitioooon
 parallel acquisition
-confocal LSM
+confocal LSM: las sc mic
 in vivo
 in vitro
-2p lsm
+2p LSM: las sc mic
 photobleaching
 NIR region
 temporal multiplexing
-photomultiplier tubes
+PMT:ph mult tubes
 titanium sapphire oscillator 80hz
-point spread function
-scanned temporal focusing (s-TeFo)
-re .
-positive expertise = caudate nuclei, SFG MPFC
-dlPFC changing decisions, IFG
+PSF: poin sp func
+s-TeFo:sc temp foc
+re:*?,.
+positive expertise:caudNucl,SFG,mPFC
+changing decisions:dlPFC,IFG
 mPFC resistance to change
-rostralMPFC + postcingulate tailored deliberation
+tailored deliberation:rMPFC
+tailored deliberation:pCing
 ROI (neuro and finance)
 ls -Xr1
 benefits>features
 Amazon FBA
 N1649 5609
+set shifting
+CRT (cog)
+hydration ACC
+attention ACC
+Stroop
+CANTAB:CamNeu(Psy)TesAutBat
+osmolality
+ANOVA:An o' Var
+cortisol&dehydration
+' ' vs "" in C
+\0 in C
+1Wm2Cos3Wg4Kr5Am
+Ecomm 6%'14, 15%'20
+SKU: 4kCos120kW600mAm
+revenue per employee
+profit per employee
+rev per sqft
+Costco turnover 26d
+CAGR:CompAnGrRa
+ROE
+ROIC
+ad libitum
+micro:millionth:10^-6
+Order of magnitudes?
+mega:million:10^6
+unpack in Python:*
+interoception
+Norvig
+CharniakMcDermott
+n-queens
+Hamiltonian path
+Clique path
+Set covering
+DFS:B^D
+BFS:B^G
+Korf:iterative deepening
+preBötC
+pF_v:venParFacNuc:RTN:retTrapNuc
+pF_L:expiration
+pontine
+PiCo:PoInsComp
+VVUQ:VerValUncQual
+burstlets
+loco-resp coord
+central patt generator
