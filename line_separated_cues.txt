@@ -1,4 +1,4 @@
-multi-electrode array
+﻿multi-electrode array
 hemodynamic
 gzip
 Tape Archive
@@ -137,3 +137,27 @@ VVUQ:VerValUncQual
 burstlets
 loco-resp coord
 central patt generator
+COMPAS
+superforecaster
+cartesian dualism
+Koch&Crick1990
+elan vital
+AUC
+in situ
+Selbst
+feature extraction/preprocessing
+target vector
+credit assignment problem
+noninformative priors
+MAP
+decision surfaces
+loss func - util
+noiseless coding
+entropy
+micro/macrostate
+KL div
+spline
+wavelets
+LMS
+parameter shrinkage
+Moore-Penrose pseudoinverse
