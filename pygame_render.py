@@ -107,6 +107,7 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
         file = open("response_times.txt","a+")
         string = "\n"+str(time.time()) +":"+str(response_times)
         file.write(string)
+        file.close()
         return cue_stats
     cue_stats = drawCards(rows,cols,row_height,col_width,deck,pause_state)
 
