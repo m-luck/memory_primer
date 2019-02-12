@@ -179,3 +179,7 @@ selective deepening
 alpha-beta pruning
 lookahead/backtrack
 maximum likelihood
+ideal theory
+homology theory
+sortal symbol
+fluent/fluxion
