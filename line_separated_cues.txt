@@ -168,3 +168,14 @@ Mochizuki
 Whig history
 Robbins conjecture
 Asynchronous Advantage Actor Critic
+bias
+variance
+probability mass
+probability density
+cdf
+p(x|y)=p(x)p(y|x)/p(y)
+propositional logic
+selective deepening
+alpha-beta pruning
+lookahead/backtrack
+maximum likelihood
