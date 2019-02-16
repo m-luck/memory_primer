@@ -183,3 +183,13 @@ ideal theory
 homology theory
 sortal symbol
 fluent/fluxion
+Kolmorogov backwards eqs (diff)
+Fokker-Planck equation
+sentential
+ZFC axioms
+gamma function
+regular dodecahedron
+Lie algebras
+NP-comp langs
+min desc length (MDL)
+Born rule
