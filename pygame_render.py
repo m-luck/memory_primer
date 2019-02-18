@@ -3,6 +3,8 @@ import time
 import sys
 import random
 import math
+to_learn = []
+rects = {}
 def launch_graphics(rows,cols,deck,w=500,h=500):
     #initializes video
     pygame.init()
@@ -15,26 +17,45 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
     red=(255,0,0)
     row_height = math.floor(h / rows)
     col_width = math.floor(w / cols)
+    phrase_clicks = {}
     def eventHandler(pause_state, old_pause):
+        global to_learn
         reset = False
         finished = False
         for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    sys.exit()
-                if event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_SPACE:
-                        pause_state = not pause_state
-                    if event.key == pygame.K_r:
-                        reset = True
-                        pause_state = False
-                    if event.key == pygame.K_q:
-                        finished = True
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                mpos = pygame.mouse.get_pos()
+                for rect in rects:
+                    if rects[rect][0].collidepoint(mpos):
+                        print(rects[rect])
+                        text = rects[rect][1]
+                        url = text.split(' ')
+                        url = '+'.join(url)
+                        url = str("https://google.com/search?q="+url)
+                        print(url)
+                        to_learn.append(url)
+                        if text in phrase_clicks:
+                            phrase_clicks[text] += 1
+                        else:
+                            phrase_clicks[text] = 0
+            if event.type == pygame.QUIT:
+                sys.exit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    pause_state = not pause_state
+                if event.key == pygame.K_r:
+                    reset = True
+                    pause_state = False
+                if event.key == pygame.K_q:
+                    finished = True
         return pause_state, reset, old_pause, finished
     def drawScreen():
         color = (230, 230, 230)
         screen.fill(color)
-    def drawRect(color, x, y, w, h):
+    def drawRect(color, x, y, w, h, text): # includes open url function
         new_rect = pygame.draw.rect(screen, color, (x,y,w,h))
+        global rects
+        rects[str(new_rect)] = (new_rect,text)
         return new_rect
     def renderText(text_string,x,y,w,h):
         new_text = font.render(text_string, True, (0xff, 0xff, 0xff))
@@ -44,7 +65,7 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
     def drawCard(cueIndex,text,rows,cols,row_height,col_width,color):
         card_x = ((cueIndex%cols) * col_width)
         card_y = (math.floor(cueIndex/(rows+1)) * row_height)
-        drawRect(color,card_x,card_y,col_width,row_height)
+        drawRect(color,card_x,card_y,col_width,row_height,text)
         renderText(text,card_x+col_width/2,card_y+row_height/2,col_width,row_height)
     def drawCardGrid(ind,deck,rows,cols,row_height,col_width,color):
         page = deck[ind]
@@ -78,10 +99,11 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
             time.sleep(0.1)
             pause_state, reset, old_pause, finished = eventHandler(pause_state, old_pause)
             now = time.time()
-            interval = 1.5
+            interval = 0.5
             if now - start > interval:
                 start = time.time()
                 if ind < len(deck)-1 and pause_state == False:
+                    rects = {}
                     ind += 1
                     screen_start = time.time()
             if reset == True:
@@ -107,6 +129,13 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
         file = open("response_times.txt","a+")
         string = "\n"+str(time.time()) +":"+str(response_times)
         file.write(string)
+        file.close()
+        file = open("avg_click.txt","a+")
+        string = str(time.time()) + ":" + str(phrase_clicks)
+        file.write(string)
+        file.close()
+        file = open("to_learn_from_recent_session.txt", "w+")
+        file.write(str(to_learn))
         file.close()
         return cue_stats
     cue_stats = drawCards(rows,cols,row_height,col_width,deck,pause_state)
