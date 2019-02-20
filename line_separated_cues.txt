@@ -193,3 +193,6 @@ Lie algebras
 NP-comp langs
 min desc length (MDL)
 Born rule
+L1 and L2 regression
+logistic regression
+sufficient statistic
