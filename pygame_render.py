@@ -99,7 +99,7 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
             time.sleep(0.1)
             pause_state, reset, old_pause, finished = eventHandler(pause_state, old_pause)
             now = time.time()
-            interval = 0.5
+            interval = 2.0
             if now - start > interval:
                 start = time.time()
                 if ind < len(deck)-1 and pause_state == False:
