@@ -1,3 +1,4 @@
+# Written in 2017 -- Not representative
 import pygame
 import time
 import sys
@@ -9,12 +10,12 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
     #initializes video
     pygame.init()
     pygame.font.init()
-    font = pygame.font.SysFont('Comic Sans MS', 30)
+    font = pygame.font.SysFont('liberationserif', 25)
     #sets the screen size
     screen = pygame.display.set_mode((w, h))
     pause_state = False
-    blue=(0,0,255)
-    red=(255,0,0)
+    blue=(255,147,55)
+    red=(255,80,43)
     row_height = math.floor(h / rows)
     col_width = math.floor(w / cols)
     phrase_clicks = {}
@@ -64,7 +65,7 @@ def launch_graphics(rows,cols,deck,w=500,h=500):
         screen.blit(new_text,(x,y))
     def drawCard(cueIndex,text,rows,cols,row_height,col_width,color):
         card_x = ((cueIndex%cols) * col_width)
-        card_y = (math.floor(cueIndex/(rows+1)) * row_height)
+        card_y = (math.floor(cueIndex/cols) * row_height)
         drawRect(color,card_x,card_y,col_width,row_height,text)
         renderText(text,card_x+col_width/2,card_y+row_height/2,col_width,row_height)
     def drawCardGrid(ind,deck,rows,cols,row_height,col_width,color):
