@@ -7,7 +7,7 @@ import random
 screen_w = 1367
 screen_h = 919
 row = 8
-column = 2
+column = 3
 cues_per_page = row*column
 cues = []
 pages = []
