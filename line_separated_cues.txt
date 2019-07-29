@@ -209,3 +209,4 @@ time hierarchy theorm
 Herbrand universe
 Sperner's Lemma
 simplex
+ingres
